@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>E-Resume - Filtering - My CV</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/css/semantic.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/css/print.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/css/calendar.min.css">
+    <link rel="icon" href="http://127.0.0.1:8000/img/car.png">
+
+    <style>
+        body.pushable > .pusher {
+            background-color: #fafafa;
+            background-image: url(http://127.0.0.1:8000/img/default_wallpaper.jpg);
+            background-attachment: fixed;
+        }
+        body * {
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+
+    <script src="http://127.0.0.1:8000/js/jquery-2.1.4.min.js"></script>
+    <script src="http://127.0.0.1:8000/js/semantic.min.js"></script>
+    <script src="http://127.0.0.1:8000/js/Chart.min.js"></script>
+    <script src="http://127.0.0.1:8000/js/calendar.min.js"></script>
+    <script src="http://127.0.0.1:8000/js/notify.min.js"></script>
+</head>
+<body class="pushable">
+<div class="ui inverted vertical sidebar menu left" style="" id="section-not-to-print">
+    <a href="" class="disabled item">
+        <img src="http://127.0.0.1:8000/img/default.png" alt="Avatar" class="ui centered image">
+        <h3 style="color: #cccccc">Chebon Vincent</h3>
+    </a>
+    <a class="item" href="http://127.0.0.1:8000/home">
+        <i class="home icon"></i>
+        Home
+    </a>
+    <div class="item">
+        <div class="header">Downloads</div>
+        <div class="menu">
+            <a href="#" class="item">
+                <i class="download icon"></i>
+                PDF
+            </a>
+            <a href="#" class="item">
+                <i class="download icon"></i>
+                Excel
+            </a>
+            <a href="#" class="item">
+                <i class="download icon"></i>
+                Word
+            </a>
+        </div>
+    </div>
+   
+    <a class="item">
+        <i class="sign out icon"></i>
+        Sign Out
+    </a>
+</div>
+<div class="pusher" onclick="act_stop()">
+    <div class="ui top attached stackable menu" id="section-not-to-print">
+        <a class="item" onclick="act()">
+            <i class="sidebar icon"></i>
+        </a>
+        <div class=" item" style="font-size: 120%">
+            <img src="http://127.0.0.1:8000/img/default.png" alt="avatar" class="">&nbsp;&nbsp;&nbsp;E-Resume
+        </div>
+                    <a class=" item" href="http://127.0.0.1:8000/home"><i class="home icon"></i>Home</a>
+            <div class="right menu">
+                <a href="#" class="item" onclick="openModal()">
+                    <i class="filter icon"></i>Filter CV
+                </a>
+                <a href="#" class="item">
+                    <i class="user icon"></i>My Account <i class="caret down icon"></i>
+                </a>
+                <a class="item" href="http://127.0.0.1:8000/logout"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    <i class="sign out icon"></i>Logout
+                </a>
+
+                <form id="logout-form" action="http://127.0.0.1:8000/logout" method="POST" style="display: none;">
+                    <input type="hidden" name="_token" value="UFuZ3DWSBQjDknAdubMTY44bClCcKcd7EDtwJN5t">                </form>
+            </div>
+            </div>
+    	<br>
+	<div class="ui fluid container" id="section-to-print">
+		<div class="ui stackable grid">
+			<!-- Personal Details UX -->
+			<div class="row">
+				<div class="column">
+					<div class="ui segments" style="margin-top:1rem">
+						<div class="ui segment header">
+							<i id="section-not-to-print" class="user circle icon"></i>
+							Personal Details
+						</div>
+						<div class="ui segment" style="text-align:center;">
+							<p><i id="section-not-to-print" class="user icon"></i>Chebon Vincent</p>
+							<p><i id="section-not-to-print" class="mail icon"></i>chebonv@gmail.com</p>
+							<p><i id="section-not-to-print" class="address card icon"></i>PO Box 1480 - 20100</p>
+							<p><i id="section-not-to-print" class="call icon"></i>0719619092</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="column">
+					<div class="ui fluid segments">
+						<div class="ui segment header">
+							<i id="section-not-to-print" class=" icons">
+								<i class="book icon"></i>
+								<i class="corner user circle icon"></i>
+							</i>
+							Summary
+						</div>
+						<div class="ui segment">
+							<form action="http://127.0.0.1:8000/summary" class="ui form" method="post">
+								<input type="hidden" name="_token" value="UFuZ3DWSBQjDknAdubMTY44bClCcKcd7EDtwJN5t">								<p>My summary is awesome and great.</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="column">
+					<div class="ui segments">
+						<div class="ui segment header">
+							<i id="section-not-to-print" class="checkmark icon"></i>
+							Areas of Expertise (Skills)
+						</div>
+						<div class="ui segment">
+							<ul>
+																											<li>
+											PHP
+										</li>
+																			<li>
+											Cisco Networking
+										</li>
+																			<li>
+											JAVA
+										</li>
+																			<li>
+											Python
+										</li>
+																			<li>
+											C Programming
+										</li>
+																								</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Education Background -->
+			<div class="row">
+				<div class="column">
+					<div class="ui segments">
+						<div class="ui segment header">
+							<i id="section-not-to-print"  class="graduation hat icon"></i>
+							Education Background
+						</div>
+																					<div class="ui segment">
+									<h5>
+																				Bachelor of science in IT
+										&nbsp;-&nbsp;
+										<label class="ui  label">
+											Degree Obtained: No
+										</label>
+									</h5>
+									<p><i id="section-not-to-print" class="building outline icon"></i>Kabarak University&nbsp;&nbsp;|&nbsp;&nbsp;<i id="section-not-to-print" class="calendar outline icon"></i>2016 - Current</p>
+									<p><i id="section-not-to-print" class="star icon"></i>Specializing in PHP, JAVA Programming</p>
+								</div>
+																		</div>
+				</div>
+			</div>
+			<!-- Work Experience -->
+			<div class="row">
+				<div class="column">
+					<div class="ui segments">
+						<div class="ui segment header">
+							<i id="section-not-to-print" class="briefcase icon"></i> Work Experience
+						</div>
+						
+																					<div class="ui segment">
+									<h5><i id="section-not-to-print" class="clipboard outline icon"></i>Freelance</h5>
+									<p><i id="section-not-to-print" class="building outline icon"></i>Freelance&nbsp;&nbsp;|&nbsp;&nbsp;<i id="section-not-to-print" class="calendar outline icon"></i>2015 - Current</p>
+									<p>Working on individual projects</p>
+								</div>
+																		</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="ui modal">
+		<i class="close icon"></i>
+		<div class="header">
+			Filter CV
+		</div>
+		<div class="content">
+			<form action="http://127.0.0.1:8000/filter/1" id="filter" class="ui form" method="post">
+				<input type="hidden" name="_token" value="UFuZ3DWSBQjDknAdubMTY44bClCcKcd7EDtwJN5t">				<input type="hidden" name="_method" value="PUT">
+				<div class="field">
+					<label for="option">Filter According to Profession</label>
+					<select name="career_option" id="option" class="ui search select dropdown">
+						<option value="search">Search Profession</option>
+													<option value="1">IT</option>
+													<option value="2">Business Management</option>
+													<option value="5">Finance</option>
+											</select>
+				</div>
+			</form>
+		</div>
+		<div class="actions">
+			<div class="ui black deny button">
+				Cancel
+			</div>
+			<div onclick="document.getElementById('filter').submit();" class="ui positive right labeled icon button">
+				Filter
+				<i class="checkmark icon"></i>
+			</div>
+		</div>
+	</div>
+	
+	<br />
+	<script>
+		$(document).ready(function () {
+			// save summary..
+			
+		});
+	</script>
+</div>
+
+<script type="text/javascript">
+    function openModal() {
+        $('.ui.modal')
+            .modal('show')
+        ;
+    }
+
+    /*beautiful dropdown UI*/
+    $('.ui.select.dropdown')
+        .dropdown()
+    ;
+    $('.ui.search.select.dropdown')
+        .dropdown({
+            allowAdditions: true
+        })
+    ;
+    /*show hide sidebar*/
+    function act() {
+        $('.ui.sidebar')
+            .sidebar('setting', 'transition', 'overlay')
+            .sidebar('toggle')
+        ;
+    }
+    function act_stop() {
+        $('.ui.sidebar')
+            .sidebar('hide')
+        ;
+    }
+    $('#example1')
+        .calendar({
+            ampm:false,
+            formatter: {
+                date: function (date, settings) {
+                    if (!date) return '';
+                    var day = date.getDate() + '';
+                    if (day.length < 2) {
+                        day = '0' + day;
+                    }
+                    var month = (date.getMonth() + 1) + '';
+                    if (month.length < 2) {
+                        month = '0' + month;
+                    }
+                    var year = date.getFullYear();
+                    return year + '-' + month + '-' + day;
+                }
+            }
+        });
+    function _print() {
+        window.print();
+    }
+</script>
+</body>
+</html>
